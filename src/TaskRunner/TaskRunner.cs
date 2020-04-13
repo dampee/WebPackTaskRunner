@@ -73,10 +73,10 @@ namespace WebPackTaskRunner
 
             // Run
             TaskRunnerNode build = new TaskRunnerNode("Run", false);
-            TaskRunnerNode buildDev = CreateTask(configFileName, cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=development&& webpack --mode=development --color");
+            TaskRunnerNode buildDev = CreateTask(configFileName, cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=development&& webpack --mode=development");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(configFileName, cwd, $"{build.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=production&& webpack --mode=production --color");
+            TaskRunnerNode buildProd = CreateTask(configFileName, cwd, $"{build.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=production&& webpack --mode=production");
             build.Children.Add(buildProd);
 
             root.Children.Add(build);
@@ -93,20 +93,20 @@ namespace WebPackTaskRunner
 
             // Serve
             TaskRunnerNode start = new TaskRunnerNode("Serve", false);
-            TaskRunnerNode startDev = CreateTask(configFileName, cwd, "Hot", "Runs 'webpack-dev-server --hot --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --hot --colors");
+            TaskRunnerNode startDev = CreateTask(configFileName, cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development&& webpack-dev-server --hot");
             start.Children.Add(startDev);
 
-            TaskRunnerNode startProd = CreateTask(configFileName, cwd, "Cold", "Runs 'webpack-dev-server --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --colors");
+            TaskRunnerNode startProd = CreateTask(configFileName, cwd, "Cold", "Runs 'webpack-dev-server'", "/c SET NODE_ENV=development&& webpack-dev-server");
             start.Children.Add(startProd);
 
             root.Children.Add(start);
 
             // Watch
             TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
-            TaskRunnerNode watchDev = CreateTask(configFileName, cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --mode=development --watch --color");
+            TaskRunnerNode watchDev = CreateTask(configFileName, cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --mode=development --watch");
             watch.Children.Add(watchDev);
 
-            TaskRunnerNode watchProd = CreateTask(configFileName, cwd, $"{watch.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=production&& webpack --mode=production --watch --color");
+            TaskRunnerNode watchProd = CreateTask(configFileName, cwd, $"{watch.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=production&& webpack --mode=production --watch");
             watch.Children.Add(watchProd);
 
             root.Children.Add(watch);
